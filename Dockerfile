@@ -11,7 +11,7 @@ RUN set -x \
 ARG MIRROR=mirror.bit.edu.cn
 
 # Installing Hadoop
-ARG HADOOP_VERSION=2.7.4
+ARG HADOOP_VERSION=2.7.6
 # COPY hadoop-${HADOOP_VERSION}.tar.gz .
 RUN set -x \
     && wget -q http://${MIRROR}/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz \
@@ -43,7 +43,7 @@ ENV HCAT_HOME=$HIVE_HOME/hcatalog
 ENV HIVE_CONF=$HIVE_HOME/conf
 
 # Installing HBase
-ARG HBASE_VERSION=1.3.1
+ARG HBASE_VERSION=1.3.2.1
 # COPY hbase-${HBASE_VERSION}-bin.tar.gz .
 RUN set -x \
     && wget -q http://${MIRROR}/apache/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz \
@@ -52,11 +52,11 @@ RUN set -x \
 ENV HBASE_HOME=/usr/local/hbase
 
 # Installing Kylin
-ARG KYLIN_VERSION=2.2.0
+ARG KYLIN_VERSION=2.3.0
 # COPY apache-kylin-${KYLIN_VERSION}-bin-hbase1x.tar.gz .
 RUN set -x \
-    && wget -q http://${MIRROR}/apache/kylin/apache-kylin-${KYLIN_VERSION}/apache-kylin-${KYLIN_VERSION}-bin-hbase1x.tar.gz \
-    && tar -xzvf apache-kylin-${KYLIN_VERSION}-bin-hbase1x.tar.gz -C /usr/local/ \
+    && wget -q http://${MIRROR}/apache/kylin/apache-kylin-${KYLIN_VERSION}/apache-kylin-${KYLIN_VERSION}-hbase1x-bin.tar.gz \
+    && tar -xzvf apache-kylin-${KYLIN_VERSION}-hbase1x-bin.tar.gz -C /usr/local/ \
     && mv /usr/local/apache-kylin-${KYLIN_VERSION}-bin /usr/local/kylin
 ENV KYLIN_HOME=/usr/local/kylin
 
